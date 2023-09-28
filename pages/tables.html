@@ -26,7 +26,7 @@
       href="../assets/img/apple-icon.png"
     />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
-    <title>Argon Dashboard 2 by Creative Tim</title>
+    <title>AUPP ID Card Management</title>
     <!--     Fonts and icons     -->
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
@@ -71,7 +71,7 @@
             class="navbar-brand-img h-100"
             alt="main_logo"
           />
-          <span class="ms-1 font-weight-bold">Argon Dashboard 2</span>
+          <span class="ms-1 font-weight-bold">ID Card Management</span>
         </a>
       </div>
       <hr class="horizontal dark mt-0" />
@@ -1152,15 +1152,27 @@
 
         // Handle the "Save Changes" button click event
         $("#saveChanges").click(function () {
-          // Get the updated values from the form fields
-          var updatedName = $("#editName").val();
-          var updatedDateCreated = $("#editDateCreated").val();
-          var updatedIDNumber = $("#editIDNumber").val();
-          var updatedActiveStatus = $("#editActiveStatus").val();
-          // Do something with the updated values, such as sending them to the server for processing
+          var confirmed = window.confirm(
+            "Are you sure you want to save changes?"
+          );
+          if (confirmed) {
+            // Get the updated values from the form fields
+            var updatedName = $("#editName").val();
+            var updatedDateCreated = $("#editDateCreated").val();
+            var updatedIDNumber = $("#editIDNumber").val();
+            var updatedActiveStatus = $("#editActiveStatus").val();
+            // Do something with the updated values, such as sending them to the server for processing
 
-          // Close the modal
-          $("#editUserModal").modal("hide");
+            // Clear the input fields in modal
+            $("#editName").val("");
+            $("#editDateCreated").val("");
+            $("#editIDNumber").val("");
+            $("#editActiveStatus").val("");
+            // Close the modal
+            $("#editUserModal").modal("hide");
+          } else {
+            alert("Changes were not saved.");
+          }
         });
         // Handle the "Close" button click event
         $("#close").click(function () {
